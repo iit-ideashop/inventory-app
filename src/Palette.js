@@ -1,30 +1,27 @@
 import React from 'react';
-import './App.css';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
-import ButtonAppBar from './components/ButtonAppBar';
-import MainPage from './components/MainPage'
+import { ThemeProvider } from '@material-ui/styles';
+import { purple } from '@material-ui/core/colors';
+import Button from '@material-ui/core/Button';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
       // Purple and green play nicely together.
-      main: '#cfd8dc',
+      main: purple[500],
     },
     secondary: {
       // This is green.A700 as hex.
-      main: '#2196f3',
+      main: '#11cb5f',
     },
   },
 });
 
-function App() {
+export default function Palette() {
   return (
     <ThemeProvider theme={theme}>
-      <ButtonAppBar/>
-      <MainPage/>
+      <Button color="primary">Primary</Button>
+      <Button color="secondary">Secondary</Button>
     </ThemeProvider>
   );
 }
-
-export default App;
