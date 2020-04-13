@@ -7,15 +7,17 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import Skeleton from '@material-ui/lab/Skeleton';
+import { Chip } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
+  chip: {
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: theme.spacing(0.5),
+    },
   },
 }));
 
@@ -25,17 +27,54 @@ export default function MainPage() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
+        <Grid item></Grid>
         <Grid item xs={12}>
-        <Typography variant="h2" align='center' gutterBottom>
+        <Typography variant="h2" align='center'>
            Welcome to the Idea Shop's Inventory
          </Typography>
          </Grid>
-        
-        <Grid item xs={3}></Grid>
+
+         <Grid item xs={3}></Grid>
         <Grid item xs={6}>
-        <Typography variant="h6" align='center' gutterBottom>
+        <Typography variant="h6" align='center' color='textSecondary' gutterBottom>
            Search for an item or select a category.
          </Typography>
+         </Grid>
+         <Grid item xs={3}></Grid>
+
+         
+         <Grid item xs={3}></Grid>
+         <Grid item xs={6}>
+            <Chip
+            label="Primary clickable"
+            clickable
+            color="secondary"
+            variant="outlined"
+          />
+          <Chip
+            label="Primary clickable"
+            clickable
+            color="secondary"
+            variant="outlined"
+          />
+          <Chip
+            label="Primary clickable"
+            clickable
+            color="secondary"
+            variant="outlined"
+          />
+          <Chip
+            label="Primary clickable"
+            clickable
+            color="secondary"
+            variant="outlined"
+          />
+          <Chip
+            label="Primary clickable"
+            clickable
+            color="secondary"
+            variant="outlined"
+          />
          </Grid>
          <Grid item xs={3}></Grid>
       </Grid>

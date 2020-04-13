@@ -17,6 +17,11 @@ const theme = createMuiTheme({
       main: '#2196f3',
     },
   },
+  typography: {
+    h2: {
+      fontSize: '3rem',
+    }
+  }
 });
 
 function App() {
