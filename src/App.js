@@ -4,6 +4,7 @@ import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import ButtonAppBar from './components/ButtonAppBar';
 import MainPage from './components/MainPage'
+import { Container } from '@material-ui/core';
 
 const theme = createMuiTheme({
   palette: {
@@ -22,7 +23,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <ButtonAppBar/>
-      <MainPage/>
+      <Container fixed>
+        <MainPage/>
+      </Container>
     </ThemeProvider>
   );
 }
