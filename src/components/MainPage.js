@@ -13,6 +13,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  item: {
+    padding: theme.spacing(3, 2),
+    height: 200,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
+  },
   chip: {
     flexWrap: 'wrap',
     '& > *': {
@@ -20,6 +27,22 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+const titles = ['Wood', 'Paper', 'Acrylic'];
+const listItems = titles.map((titles) =>
+  <div>
+  <ListItem>
+    <Skeleton variant="rect" width={210} height={118} />
+      <Typography variant="h5" align='center' gutterBottom>
+        {titles}
+      </Typography>
+      <Typography variant="body" align='center' gutterBottom>
+        Some Text descrption 
+      </Typography>
+  </ListItem>
+  <Divider/>
+  </div>
+);
 
 export default function MainPage() {
   const classes = useStyles();
@@ -41,36 +64,35 @@ export default function MainPage() {
          </Typography>
          </Grid>
          <Grid item xs={3}></Grid>
-
-         
+        
          <Grid item xs={3}></Grid>
-         <Grid item xs={6}>
+         <Grid item className={classes.chip} xs={6}>
             <Chip
-            label="Primary clickable"
+            label="electronics"
             clickable
             color="secondary"
             variant="outlined"
           />
           <Chip
-            label="Primary clickable"
+            label="screws/hardware"
             clickable
             color="secondary"
             variant="outlined"
           />
           <Chip
-            label="Primary clickable"
+            label="adhesives/chemicals"
             clickable
             color="secondary"
             variant="outlined"
           />
           <Chip
-            label="Primary clickable"
+            label="acrylic"
             clickable
             color="secondary"
             variant="outlined"
           />
           <Chip
-            label="Primary clickable"
+            label="wood"
             clickable
             color="secondary"
             variant="outlined"
@@ -79,20 +101,8 @@ export default function MainPage() {
          <Grid item xs={3}></Grid>
       </Grid>
       <List component="nav">
-        <ListItem>
-          <Skeleton variant="rect" width={210} height={118} />
-            <Typography variant="h5" align='center' gutterBottom>
-              Wooden Item
-            </Typography>
-            <Typography variant="body" align='center' gutterBottom>
-              Some Text descrption 
-            </Typography>
-        </ListItem>
-        <Divider />
-        <ListItem>
-          Test 2
-        </ListItem>
-      </List>
+        {listItems}
+        </List>      
     </div>
   );
 }
