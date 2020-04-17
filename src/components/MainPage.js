@@ -29,11 +29,9 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(0.5),
     },
   },
-
-  skeleton: {
-    margin: theme.spacing(0.5),
-  }
 }));
+
+// Category chips
 const popularCategories = ['electronics', 'screws/hardware', 'adhesives/chemicals', 'acrylic', 'wood', 'test', 'another item', 'what else', 'one more'];
 const chips = popularCategories.map((category) =>
   <Chip
@@ -43,6 +41,8 @@ const chips = popularCategories.map((category) =>
     variant='outlined'
   />
 );
+
+// List Items
 const items = [
   { title: 'Wood Block - Maple', description: 'this is a description for maple wood product', price: 3.40, unit: 'per foot' },
   { title: 'Female/Male \'Extension\' Jumper Wires (300mm)', description: 'this is a description for wires I guess', price: 0.40, unit: 'per foot' },
@@ -52,14 +52,15 @@ const listItems = items.map((item) =>
     <ListItem alignItems='flex-start'>
       <ListItemAvatar>
         <Box mr={2}>
-          <Skeleton variant='rect' width={210} height={118} />
+          <Skeleton variant='rect' width={210} height={118}/>
         </Box>
       </ListItemAvatar>
       <ListItemText
         primary={
           <Typography variant='h5' gutterBottom>
             {item.title}
-          </Typography>}
+          </Typography>
+          }
         secondary={item.description}
       />
       <ListItemSecondaryAction flexDirection='column'>
@@ -79,29 +80,33 @@ export default function MainPage() {
       <Grid container spacing={3}>
         <Grid item/>
 
+        {/* Title Header */}
         <Grid item xs={12}>
           <Typography variant='h2' align='center'>
             Welcome to the Idea Shop's Inventory
          </Typography>
         </Grid>
 
-        <Grid item xs={3}></Grid>
+        {/* Subtitle */}
+        <Grid item xs={3}/>
         <Grid item xs={6}>
           <Typography variant='h6' align='center' color='textSecondary' gutterBottom>
             Search for an item or select a category.
          </Typography>
         </Grid>
-        <Grid item xs={3}></Grid>
+        <Grid item xs={3}/>
 
-        <Grid item xs={3}></Grid>
+        {/* Category Chips */}
+        <Grid item xs={3}/>
         <Grid item className={classes.chip} xs={6}>
           <Box className={classes.chip}>
             {chips}
           </Box>
         </Grid>
-        <Grid item xs={3}></Grid>
+        <Grid item xs={3}/>
       </Grid>
 
+      {/* List of Items */}
       <List component='nav'>
         {listItems}
       </List>
