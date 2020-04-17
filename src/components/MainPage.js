@@ -6,12 +6,13 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import Skeleton from '@material-ui/lab/Skeleton';
-import { Chip, ListItemAvatar, ListItemText, ListItemSecondaryAction, Button, Avatar } from '@material-ui/core';
+import { Chip, ListItemAvatar, ListItemText, ListItemSecondaryAction, Button, Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+
   item: {
     padding: theme.spacing(3, 2),
     height: 200,
@@ -19,12 +20,17 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center'
   },
+
   chip: {
     flexWrap: 'wrap',
     '& > *': {
       margin: theme.spacing(0.5),
     },
   },
+
+  skeleton: {
+    margin: theme.spacing(0.5),
+  }
 }));
 
 const items = [ 
@@ -35,7 +41,9 @@ const listItems = items.map((item) =>
   <div>
   <ListItem alignItems='flex-start'>
     <ListItemAvatar>
-      <Skeleton variant='rect' width={210} height={118}  />
+      <Box mr={2}>
+        <Skeleton variant='rect' width={210} height={118}/>
+      </Box>
       </ListItemAvatar>
     <ListItemText
       primary={
