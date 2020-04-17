@@ -22,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   chip: {
+    display: 'flex',
+    justifyContent: 'center',
     flexWrap: 'wrap',
     '& > *': {
       margin: theme.spacing(0.5),
@@ -32,32 +34,40 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(0.5),
   }
 }));
-
-const items = [ 
-  {title:'Wood Block - Maple', description:'this is a description for maple wood product', price:3.40, unit:'per foot'},
-  {title:'Female/Male \'Extension\' Jumper Wires (300mm)', description:'this is a description for wires I guess', price:0.40, unit:'per foot'},
-  {title:'Red Acrylic Sheet (12x12 inches)', description:'this is a description for an acrylic sheet', price:6.00, unit:'per sheet'}];
+const popularCategories = ['electronics', 'screws/hardware', 'adhesives/chemicals', 'acrylic', 'wood', 'test', 'another item', 'what else', 'one more'];
+const chips = popularCategories.map((category) =>
+  <Chip
+    label={category}
+    clickable
+    color='secondary'
+    variant='outlined'
+  />
+);
+const items = [
+  { title: 'Wood Block - Maple', description: 'this is a description for maple wood product', price: 3.40, unit: 'per foot' },
+  { title: 'Female/Male \'Extension\' Jumper Wires (300mm)', description: 'this is a description for wires I guess', price: 0.40, unit: 'per foot' },
+  { title: 'Red Acrylic Sheet (12x12 inches)', description: 'this is a description for an acrylic sheet', price: 6.00, unit: 'per sheet' }];
 const listItems = items.map((item) =>
   <div>
-  <ListItem alignItems='flex-start'>
-    <ListItemAvatar>
-      <Box mr={2}>
-        <Skeleton variant='rect' width={210} height={118}/>
-      </Box>
+    <ListItem alignItems='flex-start'>
+      <ListItemAvatar>
+        <Box mr={2}>
+          <Skeleton variant='rect' width={210} height={118} />
+        </Box>
       </ListItemAvatar>
-    <ListItemText
-      primary={
-      <Typography variant='h5' gutterBottom>
-        {item.title}
-      </Typography>}
-      secondary={item.description}
-    />
-    <ListItemSecondaryAction flexDirection='column'>
-      <p>${item.price} {item.unit}</p>
-      <Button variant='contained' color='secondary'>Add to Cart</Button>
-    </ListItemSecondaryAction>
-  </ListItem>
-  <Divider/>
+      <ListItemText
+        primary={
+          <Typography variant='h5' gutterBottom>
+            {item.title}
+          </Typography>}
+        secondary={item.description}
+      />
+      <ListItemSecondaryAction flexDirection='column'>
+        <p>${item.price} {item.unit}</p>
+        <Button variant='contained' color='secondary'>Add to Cart</Button>
+      </ListItemSecondaryAction>
+    </ListItem>
+    <Divider />
   </div>
 );
 
@@ -67,59 +77,35 @@ export default function MainPage() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item></Grid>
-        <Grid item xs={12}>
-        <Typography variant='h2' align='center'>
-           Welcome to the Idea Shop's Inventory
-         </Typography>
-         </Grid>
+        <Grid item/>
 
-         <Grid item xs={3}></Grid>
-        <Grid item xs={6}>
-        <Typography variant='h6' align='center' color='textSecondary' gutterBottom>
-           Search for an item or select a category.
+        <Grid item xs={12}>
+          <Typography variant='h2' align='center'>
+            Welcome to the Idea Shop's Inventory
          </Typography>
-         </Grid>
-         <Grid item xs={3}></Grid>
-        
-         <Grid item xs={3}></Grid>
-         <Grid item className={classes.chip} xs={6}>
-            <Chip
-            label='electronics'
-            clickable
-            color='secondary'
-            variant='outlined'
-          />
-          <Chip
-            label='screws/hardware'
-            clickable
-            color='secondary'
-            variant='outlined'
-          />
-          <Chip
-            label='adhesives/chemicals'
-            clickable
-            color='secondary'
-            variant='outlined'
-          />
-          <Chip
-            label='acrylic'
-            clickable
-            color='secondary'
-            variant='outlined'
-          />
-          <Chip
-            label='wood'
-            clickable
-            color='secondary'
-            variant='outlined'
-          />
-         </Grid>
-         <Grid item xs={3}></Grid>
+        </Grid>
+
+        <Grid item xs={3}></Grid>
+        <Grid item xs={6}>
+          <Typography variant='h6' align='center' color='textSecondary' gutterBottom>
+            Search for an item or select a category.
+         </Typography>
+        </Grid>
+        <Grid item xs={3}></Grid>
+
+        <Grid item xs={3}></Grid>
+        <Grid item className={classes.chip} xs={6}>
+          <Box className={classes.chip}>
+            {chips}
+          </Box>
+        </Grid>
+        <Grid item xs={3}></Grid>
       </Grid>
+
       <List component='nav'>
         {listItems}
-        </List>      
+      </List>
+
     </div>
   );
 }
