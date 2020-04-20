@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   item: {
-    padding: theme.spacing(3, 2),
-    height: 200,
+    // padding: theme.spacing(),
+    // height: 150,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center'
@@ -88,13 +88,13 @@ export default function MainPage() {
         </Grid>
 
         {/* Subtitle */}
-        <Grid item xs={3}/>
-        <Grid item xs={6}>
+        <Grid xs={3}/>
+        <Grid xs={6}>
           <Typography variant='h6' align='center' color='textSecondary' gutterBottom>
             Search for an item or select a category.
          </Typography>
         </Grid>
-        <Grid item xs={3}/>
+        <Grid xs={3}/>
 
         {/* Category Chips */}
         <Grid item xs={3}/>
@@ -104,6 +104,7 @@ export default function MainPage() {
           </Box>
         </Grid>
         <Grid item xs={3}/>
+        
       </Grid>
 
       {/* List of Items */}
