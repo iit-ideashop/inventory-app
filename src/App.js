@@ -4,9 +4,9 @@ import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import ButtonAppBar from './components/ButtonAppBar';
 import MainPage from './components/MainPage'
-import { Container } from '@material-ui/core';
+import { Container, responsiveFontSizes } from '@material-ui/core';
 
-const theme = createMuiTheme({
+let theme = createMuiTheme({
   palette: {
     primary: {
       // Purple and green play nicely together.
@@ -23,6 +23,8 @@ const theme = createMuiTheme({
     }
   }
 });
+
+theme = responsiveFontSizes(theme);
 
 function App() {
   return (
