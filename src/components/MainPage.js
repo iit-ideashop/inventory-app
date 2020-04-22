@@ -64,7 +64,7 @@ const listItems = items.map((item) =>
         secondary={item.description}
       />
       <ListItemSecondaryAction flexDirection='column'>
-        <p>${item.price} {item.unit}</p>
+        <p>${item.price.toFixed(2)} {item.unit}</p>
         <Button variant='contained' color='secondary'>Add to Cart</Button>
       </ListItemSecondaryAction>
     </ListItem>
