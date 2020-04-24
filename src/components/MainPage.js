@@ -76,10 +76,10 @@ const listItems = items.map((item) =>
       />
       </Hidden>
 
-<Hidden only={['xs', 'sm']}>
+      <Hidden only={['xs', 'sm']}>
          <ListItemSecondaryAction flexDirection='column'>
-           <p>${item.price} {item.unit}</p>
-           <Button variant='contained' color='secondary'>Add to Cart</Button>
+         <p>${item.price.toFixed(2)} {item.unit}</p>
+          <Button variant='contained' color='secondary'>Add to Cart</Button>
          </ListItemSecondaryAction>
        </Hidden>
 
@@ -100,7 +100,7 @@ const listItems = items.map((item) =>
         </Typography>
 
         <Typography variant='h6'>
-          ${item.price}
+          ${item.price.toFixed(2)}
         </Typography>
 
         <div>{item.unit}</div>
