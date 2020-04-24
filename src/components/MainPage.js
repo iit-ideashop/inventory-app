@@ -6,16 +6,17 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import Skeleton from '@material-ui/lab/Skeleton';
-import { Chip, ListItemAvatar, ListItemText, ListItemSecondaryAction, Button, Box } from '@material-ui/core';
+import { Chip, ListItemAvatar, ListItemText, ListItemSecondaryAction, Button, Box, Hidden, Link } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  listitem: {
+    position: 'fixed',
+  },
 
   item: {
-    // padding: theme.spacing(),
-    // height: 150,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center'
@@ -47,27 +48,73 @@ const items = [
   { title: 'Wood Block - Maple', description: 'this is a description for maple wood product', price: 3.40, unit: 'per foot' },
   { title: 'Female/Male \'Extension\' Jumper Wires (300mm)', description: 'this is a description for wires I guess', price: 0.40, unit: 'per foot' },
   { title: 'Red Acrylic Sheet (12x12 inches)', description: 'this is a description for an acrylic sheet', price: 6.00, unit: 'per sheet' }];
+
 const listItems = items.map((item) =>
   <div>
-    <ListItem alignItems='flex-start'>
-      <ListItemAvatar>
+    <ListItem display='flex' flexDirection='column'>
+
+    <Hidden only={['xs', 'sm']}>
+    <ListItemAvatar>
         <Box mr={2}>
           <Skeleton variant='rect' width={210} height={118}/>
         </Box>
       </ListItemAvatar>
+
       <ListItemText
         primary={
           <Typography variant='h5' gutterBottom>
+            <Link color='secondary' href='#'>
             {item.title}
+            </Link>
           </Typography>
           }
-        secondary={item.description}
+        secondary={
+          <Hidden only={['xs', 'sm']}>
+            {item.description}
+          </Hidden>
+        }
       />
-      <ListItemSecondaryAction flexDirection='column'>
-        <p>${item.price} {item.unit}</p>
-        <Button variant='contained' color='secondary'>Add to Cart</Button>
-      </ListItemSecondaryAction>
+      </Hidden>
+
+<Hidden only={['xs', 'sm']}>
+         <ListItemSecondaryAction flexDirection='column'>
+           <p>${item.price} {item.unit}</p>
+           <Button variant='contained' color='secondary'>Add to Cart</Button>
+         </ListItemSecondaryAction>
+       </Hidden>
+
+
+      {/* Mobile Version */}
+      <Hidden only={['xl', 'lg', 'md']}>
+        <ListItemAvatar>
+          <Box mr={2}>
+            <Skeleton variant='rect' width={160} height={120}/>
+          </Box>
+        </ListItemAvatar>
+
+        <div display='flex' flexDirection='column'>
+        <Typography>
+          <Link color='secondary' href='#'>
+            {item.title}
+          </Link>
+        </Typography>
+
+        <Typography variant='h6'>
+          ${item.price}
+        </Typography>
+
+        <div>{item.unit}</div>
+        </div>
+      </Hidden>
+
     </ListItem>
+
+    <Box padding='16px'>
+      <Hidden only={['xl', 'lg', 'md']}>
+        <Button variant='contained' color='secondary' fullWidth='true' size='large'>Add to Cart</Button>
+      </Hidden>
+    </Box>
+
     <Divider />
   </div>
 );
